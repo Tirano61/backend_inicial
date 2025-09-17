@@ -1,0 +1,18 @@
+
+
+version: '3'
+
+services: 
+  db: 
+    image: postgres:16
+    restart: always
+    container_name: inicial_backend_db
+    ports: 
+      - 5455:5432
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB_NAME}
+      POSTGRES_USER: ${POSTGRES_USER}
+      # Variables de entorno para la base de datos
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes: # Guarda la data en en volumen del disco local para la persistencia de datos
+      - ./postgresdb:/var/lib/postgresql/data
